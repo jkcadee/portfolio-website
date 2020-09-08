@@ -31,7 +31,7 @@ function App() {
           <div className="container">
             <div className="card-deck">
               
-            <div className="col-md-6">
+            <div className="col-md-5">
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 shadow-sm">
 
@@ -59,7 +59,7 @@ function App() {
                   </Accordion>
                 </div>
               
-                <div className="col-md-6">
+                <div className="col-md-7">
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 shadow-sm">
 
@@ -87,7 +87,7 @@ function App() {
              
                
 
-                <div className="col-md-6">
+                <div className="col-md-4">
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 shadow-sm">
 
@@ -116,7 +116,7 @@ function App() {
 
               
 
-                <div className="col-md-6">
+                <div className="col-md-8">
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 shadow-sm">
 
