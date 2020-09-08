@@ -19,7 +19,7 @@ function App() {
 
             <p className="lead text-muted">
               Hi! I'm a CST student currently on their co-op term. <br/>
-              Pleased to meet you.
+              Pleased to meet you. This is a curation of my work!
             </p>
           </div>
         </section>
