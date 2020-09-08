@@ -16,6 +16,9 @@ phases:
     commands:
         - terraform init
         - npm run build
+  post_build:
+    commands:
+      - zip build.zip * -r
 artifacts:
   files:
-    - '**/*'
+    - build.zip
