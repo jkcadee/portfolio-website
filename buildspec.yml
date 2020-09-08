@@ -16,3 +16,6 @@ phases:
     commands:
         - terraform init
         - npm run build
+artifacts:
+  files:
+    - '**/*'
