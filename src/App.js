@@ -15,16 +15,18 @@ function App() {
       </header>
 
       <main role="main">
-        <section className="jumbotron text-center" style={{margin:"0"}}>
-          <div className="container">
+        <section className="jumbotron text-center jumbotron-image" style={{margin:"0", backgroundImage: `url(${"VV_WatercolorStainedPaper_01.jpg"})`, backgroundPosition: "center center", backgroundSize: "cover", backgroundAttachment: "scroll"}}>
+          <div className="container text-light">
             <h1>Janelle Kwok</h1>
 
             <img src="profile.png" className="rounded-circle" width="200" height="200"/>
 
-            <p className="lead text-muted">
-              Hi! I'm a co-op student studying at the British Columbia Institute of Technology in their Computer Systems Technology diploma. <br/>
+            <p className="lead">
+              Hi! I'm a co-op student studying at the British Columbia Institute of Technology in their Computer Systems Technology program. <br/>
               Pleased to meet you. This is a curation of my work!
             </p>
+            <a href="https://github.com/jkcadee" style={{marginRight:"1em"}}><img src="GitHub-Mark-Light-32px.png"/></a>
+            <a href="https://www.linkedin.com/in/jan-kwok/" style={{marginLeft:"0.5em"}}><img src="LI-In-Bug.png" height="32px" width="40px"/></a>
           </div>
         </section>
         <div className="album py-5 bg-light">
@@ -72,7 +74,8 @@ function App() {
                 
                         <AccordionCollapse eventKey="0">
                           <div>
-                          <p className="text-left">A one day hackathon project. Done as the final assessment for COMP 2522 Object Oriented Programming 1 at BCIT.
+                          <h6>April 2020</h6>
+                          <p className="text-left">A 12-hour/one day hackathon project. Done as the final assessment for COMP 2522 Object Oriented Programming 1 at BCIT.
                           <br/> <br/> This project is a space gravity simulator game, allowing users to spawn planets or stars and attempt to collect coins to increase their score.
                           </p>
                           <a href="https://github.com/Cragzu/gravsim-19" >GitHub Link</a>
@@ -100,9 +103,10 @@ function App() {
                 
                         <AccordionCollapse eventKey="0">
                           <div>
+                          <h6>Jan 2020</h6>
                           <p className="text-left">A two day hackathon project. As a requirement because of co-op placement, I attended the annual QDS hackathon and was placed into a randomized team.
-                          <br/> <br/> Our main goal was finding a way to manipulate a large amount of data, and we chose a Vancouver district scoring system. 
-                          This was based on how desireable a living space each district was depending on personal needs.
+                          <br/> <br/> Our main goal was finding a way to manipulate a large amount of data, and we chose to create an application that scores districts of Vancouver. 
+                          Each score based on how desireable a living space each district was depending on personal needs.
                           </p>
                           <a href="https://github.com/clintonbf/QDS_2020" >GitHub Link</a>
                           </div>
@@ -129,7 +133,8 @@ function App() {
                 
                         <AccordionCollapse eventKey="0">
                           <div>
-                          <p className="text-left">A 4 month/term-long project. This was part of COMP 1800 or Projects 1 during the first term of CST. 
+                          <h6>Sept 2019 - Dec 2019</h6>
+                          <p className="text-left">A 4 month/term-long project. This was part of COMP 1800 Projects 1 during the first term of CST. 
                           <br/> <br/> We were placed into randomized teams and were prompted to create a project that solved some kind of modern problem.
                           This site tracks the amount of water consumed as inputted by the user. This helped them ensure they are properly hydrated.
                           </p>
