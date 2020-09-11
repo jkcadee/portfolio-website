@@ -1,10 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
 import './App.css';
 
 import {Accordion, AccordionToggle, Card, AccordionCollapse} from 'react-bootstrap'
 
-function App() {
+const headers = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*'
+} 
 
+function App() {
+  const [email_address, setEmailAddress] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+
+      console.log(email_address)
+      console.log(message)
+      
+      axios.post('https://301bmpbe8a.execute-api.us-east-1.amazonaws.com/Test/contact_email_resource', {
+          "email_address": email_address,
+          "message": message
+      }, headers)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(res => {
+        console.error(res);
+      })
+  }
 
   return (
     <div className="App">
@@ -17,7 +42,7 @@ function App() {
       <main role="main">
         <section className="jumbotron text-center jumbotron-image" style={{margin:"0", backgroundImage: `url(${"VV_WatercolorStainedPaper_01.jpg"})`, backgroundPosition: "center center", backgroundSize: "cover", backgroundAttachment: "scroll"}}>
           <div className="container text-light">
-            <h1>Janelle Kwok</h1>
+            <h1>Hi I'm Janelle Kwok</h1>
 
             <img src="profile.png" className="rounded-circle" width="200" height="200"/>
 
@@ -150,7 +175,35 @@ function App() {
 
             </div>
           </div>
+
+          <div className="container">
+            <h5>Say something to me!</h5>
+            <div className="col-md-12">
+            <form>
+              <div className="form-group row">
+                <div className="col-md-12">
+                  <input type="email" placeholder="Email address" className="form-control" onChange={e => setEmailAddress(e.target.value)}></input>
+                </div>
+              </div>
+
+              <div className="form-group row">
+                <div className="col-md-12">
+                  <textarea placeholder="Enter text here..." className="form-control" onChange={e => setMessage(e.target.value)}></textarea>
+                </div>
+              </div>
+
+              <div className="form-group row">
+                <div className="col-md-2 ml-auto">
+                  <input type="button" className="btn btn-primary" value="Send Message" onClick={() => handleSubmit()}></input>
+                </div>
+              </div>
+            </form>
+            </div>
+            
+              
         </div>
+        </div>
+
       </main>
       
       <footer className="container" style={{paddingTop: "1rem"}}>
