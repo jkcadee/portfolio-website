@@ -42,7 +42,7 @@ function App() {
       <main role="main">
         <section className="jumbotron text-center jumbotron-image" style={{margin:"0", backgroundImage: `url(${"VV_WatercolorStainedPaper_01.jpg"})`, backgroundPosition: "center center", backgroundSize: "cover", backgroundAttachment: "scroll"}}>
           <div className="container text-light">
-            <h1>Hi I'm Janelle Kwok</h1>
+            <h1>Janelle Kwok</h1>
 
             <img src="profile.png" className="rounded-circle" width="200" height="200"/>
 
