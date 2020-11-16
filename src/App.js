@@ -13,11 +13,20 @@ const headers = {
 function App() {
   const [email_address, setEmailAddress] = useState("");
   const [message, setMessage] = useState("");
+  const [confirmed, setConfirmed] = useState(false);
+  const [errorState, setErrorState] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
+      setConfirmed(true);
+      setErrorState(false);
 
-      console.log(email_address)
-      console.log(message)
+      console.log(email_address);
+      console.log(message);
+
+      if (email_address === "" || message === "") {
+        setErrorState(true);
+        return;
+      }
       
       axios.post('https://301bmpbe8a.execute-api.us-east-1.amazonaws.com/Test/contact_email_resource', {
           "email_address": email_address,
@@ -25,6 +34,7 @@ function App() {
       }, headers)
       .then(res => {
         console.log(res);
+        window.location.reload();
       })
       .catch(res => {
         console.error(res);
@@ -57,6 +67,35 @@ function App() {
         <div className="album py-5 bg-light">
           <div className="container">
             <div className="card-deck">
+            <div className="col-md-12">
+                <Accordion>
+                <AccordionToggle as={Card} eventKey="0" className="mb-4 Accordion">
+
+                    <img src="galaxy-brain.jpg" className="card-img-top"></img>
+                    
+                    <div className="card-body">
+                        <h5 className="card-title">
+                          Galaxy Brain
+                        </h5>
+                
+                        <AccordionCollapse eventKey="0">
+                          <div>
+                          <h6>October 2020</h6>
+                          <p className="text-left">A 12 hour/one day project. This project was created for the Dubhacks 2020 hackathon. I worked in a group of two to create a project that helped workers regulate their work and break time.
+                          <br/> <br/>
+                          The project's front-end was built on React and is hosted and served through a pipeline on AWS. The site also allows you to change both your work and break time in accordance with your actual work schedule.
+                          </p>
+                          <a href="https://github.com/Cragzu/galaxy-brain" style={{marginRight: "10px"}}>GitHub Link</a> 
+                          <a href="http://galaxy-brain-dubhacks.s3-website-us-east-1.amazonaws.com/" style={{marginLeft: "10px"}}>Site Link</a>
+                          </div>
+                            
+                        </AccordionCollapse>
+                    </div>
+                    
+                  </AccordionToggle>
+                  </Accordion>
+                </div>
+
               
             <div className="col-md-5">
                 <Accordion>
@@ -78,7 +117,6 @@ function App() {
                           </p>
                           <a href="https://github.com/seungho0106/COMP-2800-Team-DTC-05-Out-Of-Line" >GitHub Link</a>
                           </div>
-                            
                         </AccordionCollapse>
                     </div>
                     
@@ -165,7 +203,6 @@ function App() {
                           </p>
                           <a href="https://github.com/jogeyfrangus/VelvetThunder" >GitHub Link</a>
                           </div>
-                            
                         </AccordionCollapse>
                     </div>
                     
@@ -177,6 +214,7 @@ function App() {
           </div>
 
           <div className="container">
+            <hr />
             <h5>Say something to me!</h5>
             <div className="col-md-12">
             <form>
@@ -192,9 +230,19 @@ function App() {
                 </div>
               </div>
 
+              {errorState ? 
+              (
+                <div>
+                  <div className="col-md-12 ml-auto text-danger">
+                    <p>Error! Please enter something</p>
+                  </div>
+                </div>
+              )
+              : null}
+              
               <div className="form-group row">
                 <div className="col-md-2 ml-auto">
-                  <input type="button" className="btn btn-primary" value="Send Message" onClick={() => handleSubmit()}></input>
+                  <input type="button" className={confirmed ? `btn btn-primary disabled` : "btn btn-primary"} value="Send Message" onClick={() => handleSubmit()}></input>
                 </div>
               </div>
             </form>
