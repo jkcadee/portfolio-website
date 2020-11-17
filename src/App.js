@@ -67,7 +67,7 @@ function App() {
         <div className="album py-5 bg-light">
           <div className="container">
             <div className="card-deck">
-            <div className="col-md-12">
+            <div className="col-md-14">
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 Accordion">
 
