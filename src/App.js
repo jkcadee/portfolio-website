@@ -1,22 +1,29 @@
 import React, {useState} from 'react';
-import axios from 'axios';
 import './App.css';
 
 import {Accordion, AccordionToggle, Card, AccordionCollapse} from 'react-bootstrap'
 
-const headers = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': '*'
-} 
+// Functions import
+import {sendContactMessage} from './functions/requests';
 
-function App() {
+// Images import
+import galaxyBrainImg from './assets/galaxy-brain.jpg';
+import gitHubImg from './assets/GitHub-Mark-Light-32px.png';
+import gravsimGif from './assets/gravsim.gif';
+import hydroHomiesImg from './assets/Hydro-Homies-Logo.png';
+import QDS2020Img from './assets/img_city.png';
+import linkedInImg from './assets/LI-In-Bug.png';
+import outOfLineImg from './assets/out-of-line-logo.png';
+import profileImg from './assets/profile.png';
+
+const App = () => {
   const [email_address, setEmailAddress] = useState("");
   const [message, setMessage] = useState("");
   const [confirmed, setConfirmed] = useState(false);
   const [errorState, setErrorState] = useState(false);
 
-  const handleSubmit = () => {
+  // Function that handles submission of a contact message on the frontend
+  const handleContactSubmit = async () => {
       setConfirmed(true);
       setErrorState(false);
 
@@ -28,17 +35,15 @@ function App() {
         return;
       }
       
-      axios.post('https://301bmpbe8a.execute-api.us-east-1.amazonaws.com/Test/contact_email_resource', {
-          "email_address": email_address,
-          "message": message
-      }, headers)
-      .then(res => {
+      const payload = {email_address: email_address, message: message};
+
+      try {
+        let res = sendContactMessage(payload);
         console.log(res);
         window.location.reload();
-      })
-      .catch(res => {
-        console.error(res);
-      })
+      } catch (error) {
+        console.log(error);
+      }
   }
 
   return (
@@ -50,18 +55,18 @@ function App() {
       </header>
 
       <main role="main">
-        <section className="jumbotron text-center jumbotron-image" style={{margin:"0", backgroundImage: `url(${"VV_WatercolorStainedPaper_01.jpg"})`, backgroundPosition: "center center", backgroundSize: "cover", backgroundAttachment: "scroll"}}>
+        <section className="jumbotron text-center jumbotron-image header-background">
           <div className="container text-light">
             <h1>Janelle Kwok</h1>
 
-            <img src="profile.png" className="rounded-circle" width="200" height="200"/>
+            <img src={profileImg} alt="profile image" className="rounded-circle" width="200" height="200"/>
 
             <p className="lead">
-              Hi! I'm a co-op student studying at the British Columbia Institute of Technology in their Computer Systems Technology program. <br/>
-              Pleased to meet you. This is a curation of my work!
+              Hi! I'm a second year student studying at the British Columbia Institute of Technology in their Computer Systems Technology program. 
+              I was recently admitted into their cloud computing option. Pleased to meet you. This is a curation of my work!
             </p>
-            <a href="https://github.com/jkcadee" style={{marginRight:"1em"}}><img src="GitHub-Mark-Light-32px.png"/></a>
-            <a href="https://www.linkedin.com/in/jan-kwok/" style={{marginLeft:"0.5em"}}><img src="LI-In-Bug.png" height="32px" width="40px"/></a>
+            <a href="https://github.com/jkcadee" style={{marginRight:"1em"}}><img src={gitHubImg}/></a>
+            <a href="https://www.linkedin.com/in/jan-kwok/" style={{marginLeft:"0.5em"}}><img src={linkedInImg} height="32px" width="40px"/></a>
           </div>
         </section>
         <div className="album py-5 bg-light">
@@ -71,7 +76,7 @@ function App() {
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 Accordion">
 
-                    <img src="galaxy-brain.jpg" className="card-img-top"></img>
+                    <img src={galaxyBrainImg} alt="galaxy brain" className="card-img-top"></img>
                     
                     <div className="card-body">
                         <h5 className="card-title">
@@ -101,7 +106,7 @@ function App() {
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 Accordion">
 
-                    <img src="out-of-line logo.png" className="card-img-top"></img>
+                    <img src={outOfLineImg} alt="out of line" className="card-img-top"></img>
                     
                     <div className="card-body">
                         <h5 className="card-title">
@@ -128,7 +133,7 @@ function App() {
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 Accordion">
 
-                    <img src="gravsim gif.gif" className="card-img-top"></img>
+                    <img src={gravsimGif} alt="gravsim gif" className="card-img-top"></img>
                     
                     <div className="card-body">
                         <h5 className="card-title">
@@ -157,7 +162,7 @@ function App() {
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 Accordion">
 
-                    <img src="img_city.png" className="card-img-top"></img>
+                    <img src={QDS2020Img} alt="city image" className="card-img-top"></img>
                     
                     <div className="card-body">
                         <h5 className="card-title">
@@ -187,7 +192,7 @@ function App() {
                 <Accordion>
                 <AccordionToggle as={Card} eventKey="0" className="mb-4 Accordion">
 
-                    <img src="Hydro Homies Logo.png" className="card-img-top"></img>
+                    <img src={hydroHomiesImg} alt="hydro homies" className="card-img-top"></img>
                     
                     <div className="card-body">
                         <h5 className="card-title">
@@ -242,7 +247,7 @@ function App() {
               
               <div className="form-group row">
                 <div className="col-md-2 ml-auto">
-                  <input type="button" className={confirmed ? `btn btn-primary disabled` : "btn btn-primary"} value="Send Message" onClick={() => handleSubmit()}></input>
+                  <input type="button" className={confirmed ? `btn btn-primary disabled` : "btn btn-primary"} value="Send Message" onClick={() => handleContactSubmit()}></input>
                 </div>
               </div>
             </form>
