@@ -40,7 +40,7 @@ const App = () => {
       try {
         let res = sendContactMessage(payload);
         console.log(res);
-        window.location.reload();
+        //window.location.reload();
       } catch (error) {
         console.log(error);
       }
@@ -49,9 +49,6 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header bg-light">
-        {/* <div className="navbar navbar-dark bg-dark">
-          <h3>My Site</h3>
-        </div> */}
       </header>
 
       <main role="main">
