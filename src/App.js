@@ -40,7 +40,7 @@ const App = () => {
       try {
         let res = sendContactMessage(payload);
         console.log(res);
-        //window.location.reload();
+        window.location.reload();
       } catch (error) {
         console.log(error);
       }
