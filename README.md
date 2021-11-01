@@ -2,4 +2,3 @@
 Boostrapped with React and hosted through an AWS S3 bucket. 
 
 This repository contains the code of the front-end of my site. Feel free to take a look!
-The code for my contact form is here: https://github.com/jkcadee/portfolio-site-contact
